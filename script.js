@@ -32,12 +32,20 @@ function LoginToFacebook() {
             });
             FB.api('/me/friends', function (response) {
                 console.log(response.data);
-            })
+            });
+            FB.api('/me/photos?type=uploaded', function (response) {
+                photos = response.data;
+                for (var i = 0; i < photos.length; i++){
+                    FB.api('/' + photos[i].id + '', function(response){
+                        console.log(response);
+                    });
+                }
+            });
         } else {
             console.log('User cancelled login or did not fully authorize.');
         }
     }, {
-        scope: 'email,user_friends,public_profile'
+        scope: 'email,user_friends,public_profile,user_photos'
     });
     
 }
