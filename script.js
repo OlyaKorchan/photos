@@ -24,10 +24,10 @@ function LoginToFacebook() {
     var photos = [];
     FB.login(function (response) {
 console.log(response);
-console.log(response.userID);
+console.log(response.authResponse.userID);
 
 FB.api(
-    "/" + response.userID,
+    "/" + response.authResponse.userID,
     function (response) {
         console.log(response);
     }
