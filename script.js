@@ -32,8 +32,8 @@ function LoginToFacebook() {
             FB.api('/me/photos?type=uploaded', function (response) {
                 photos = response.data;
                 for (var i = 0; i < photos.length; i++){
-                    FB.api('/me/' + photos[i].id + '', function(response){
-                        console.log(response.data.url);
+                    FB.api('/' + photos[i].id + '', function(response){
+                        console.log("Photo" + response.link);
                     });
                 }
             });
