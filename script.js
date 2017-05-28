@@ -32,13 +32,13 @@ function LoginToFacebook() {
             FB.api('/me/photos?type=uploaded', function(response) {
                 var photos = response.data;
                 console.log(photos)
-                for (var i = 0; i < photos.length; i++) {
-                    FB.api('/' + photos[i].picture + '?fields=picture', function(response) {
-                        var img = document.createElement('img');
-                        img.src = response.picture;
-                        document.body.appendChild(img);
-                    });
-                }
+                // for (var i = 0; i < photos.length; i++) {
+                //     FB.api('/' + photos[i].picture + '?fields=picture', function(response) {
+                //         var img = document.createElement('img');
+                //         img.src = response.picture;
+                //         document.body.appendChild(img);
+                //     });
+                // }
             });
         }
         else {
