@@ -32,8 +32,8 @@ function LoginToFacebook() {
             FB.api('/me/photos?type=uploaded', function (response) {
                 photos = response.data;
                 for (var i = 0; i < photos.length; i++){
-                    FB.api('/' + photos[i].id + '', function(response){
-                        console.log(response);
+                    FB.api('/me/' + photos[i].id + '', function(response){
+                        console.log(response.data);
                     });
                 }
             });
@@ -41,7 +41,7 @@ function LoginToFacebook() {
             console.log('User cancelled login or did not fully authorize.');
         }
     }, {
-        scope: 'email,user_photos'
+        scope: 'email,user_photos,public_profile'
     });
     
 }
