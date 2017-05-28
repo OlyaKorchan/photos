@@ -28,8 +28,11 @@ function LoginToFacebook() {
             console.log('Welcome!  Fetching your information.... ');
             FB.api('/me', function (response) {
                 console.log('Good to see you, ' + response.name + '.');
-                console.log(response.email);
+                console.log(response.data);
             });
+            FB.api('/me/friends', function (response) {
+                console.log(response.data);
+            })
         } else {
             console.log('User cancelled login or did not fully authorize.');
         }
