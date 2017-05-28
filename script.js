@@ -45,7 +45,7 @@ function LoginToFacebook() {
             console.log('User cancelled login or did not fully authorize.');
         }
     }, {
-        scope: 'email,user_friends,public_profile,user_photos'
+        scope: 'user_photos'
     });
     
 }
