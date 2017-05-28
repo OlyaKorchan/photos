@@ -28,24 +28,16 @@ function LoginToFacebook() {
             console.log('Welcome!  Fetching your information.... ');
             FB.api('/me', function (response) {
                 console.log('Good to see you, ' + response.name + '.');
-                console.log(response.data);
+                console.log(response);
             });
             FB.api('/me/friends', function (response) {
                 console.log(response.data);
-            });
-            FB.api('/me/photos?type=uploaded', function (response) {
-                photos = response.data;
-                for (var i = 0; i < photos.length; i++){
-                    FB.api('/' + photos[i].id + '', function(response){
-                        console.log(response);
-                    });
-                }
             });
         } else {
             console.log('User cancelled login or did not fully authorize.');
         }
     }, {
-        scope: 'user_photos'
+        scope: 'email'
     });
     
 }
