@@ -28,14 +28,7 @@ function LoginToFacebook() {
             console.log('Welcome!  Fetching your information.... ');
             FB.api('/me', function (response) {
                 console.log('Good to see you, ' + response.name + '.');
-            });
-            FB.api('/me/photos?type=uploaded', function (response) {
-                photos = response.data;
-                for (var i = 0; i < photos.length; i++){
-                    FB.api('/' + photos[i].id + '', function(response){
-                        console.log("Photo" + response.link);
-                    });
-                }
+                console.log("Cover " + response.cover);
             });
         } else {
             console.log('User cancelled login or did not fully authorize.');
