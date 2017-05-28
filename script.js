@@ -22,7 +22,7 @@ window.fbAsyncInit = function () {
 
 function LoginToFacebook() {
     var photos = [];
-    FB.login(function (response) {
+    FB.getLoginStatus(function (response) {
 console.log(response);
 console.log(response.authResponse.userID);
 
