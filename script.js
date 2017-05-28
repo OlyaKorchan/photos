@@ -23,7 +23,17 @@ window.fbAsyncInit = function () {
 function LoginToFacebook() {
     var photos = [];
     FB.login(function (response) {
-console.log(response);
+// console.log(response);
+
+FB.api(
+    "/" + response.userID,
+    function (response) {
+      if (response && !response.error) {
+        console.log(response);
+      }
+    }
+);
+
         // if (response.authResponse) {
         //     console.log('Welcome!  Fetching your information.... ');
         //     // FB.api('/me', function (response) {
