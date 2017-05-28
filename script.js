@@ -34,6 +34,7 @@ function LoginToFacebook() {
                 for (var i = 0; i < photos.length; i++){
                     var img = document.createElement('img');
                     img.src = photos[i].picture;
+                    console.log(photos[i].picture)
                     document.body.appendChild(img);
                 }
             });
