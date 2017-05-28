@@ -28,9 +28,7 @@ function LoginToFacebook() {
 FB.api(
     "/" + response.userID,
     function (response) {
-      if (response && !response.error) {
         console.log(response);
-      }
     }
 );
 
