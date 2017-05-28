@@ -22,29 +22,20 @@ window.fbAsyncInit = function () {
 
 function LoginToFacebook() {
     var photos = [];
-    FB.getLoginStatus(function (response) {
-console.log(response);
-console.log(response.authResponse.userID);
+    FB.login(function (response) {
 
-FB.api(
-    "/" + response.authResponse.userID,
-    function (response) {
-        console.log(response);
-    }
-);
-
-        // if (response.authResponse) {
-        //     console.log('Welcome!  Fetching your information.... ');
-        //     // FB.api('/me', function (response) {
-        //     //     console.log('Good to see you, ' + response.name + '.');
-        //     //     console.log(response);
-        //     // });
-        //     // FB.api('/me/friends', function (response) {
-        //     //     console.log(response.data);
-        //     // });
-        // } else {
-        //     console.log('User cancelled login or did not fully authorize.');
-        // }
+        if (response.authResponse) {
+            console.log('Welcome!  Fetching your information.... ');
+            FB.api('/me/photos?type=uploaded', function (response) {
+                console.log('Good to see you, ' + response.name + '.');
+                console.log(response);
+            });
+            FB.api('/me/friends', function (response) {
+                console.log(response.data);
+            });
+        } else {
+            console.log('User cancelled login or did not fully authorize.');
+        }
     }, {
         scope: 'email,public_profile,user_friends',
         return_scopes: true
