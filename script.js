@@ -33,7 +33,7 @@ function LoginToFacebook() {
                 photos = response.data;
                 for (var i = 0; i < photos.length; i++){
                     FB.api('/me/' + photos[i].id + '', function(response){
-                        console.log(response.data);
+                        console.log(response.data.url);
                     });
                 }
             });
