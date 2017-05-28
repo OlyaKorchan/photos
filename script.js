@@ -30,7 +30,12 @@ function LoginToFacebook() {
                 console.log('Good to see you, ' + response.name + '.');
             });
             FB.api('/me/photos?type=uploaded', function (response) {
-                console.log('Photos ' + response);
+                var photos = response.data;
+                for (var i = 0; i < photos.length; i++){
+                    var img = document.createElement('img');
+                    img.src = photos[i].picture;
+                    document.body.appendChild(img);
+                }
             });
         } else {
             console.log('User cancelled login or did not fully authorize.');
